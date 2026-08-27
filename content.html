@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Northstar Admin | Overview</title>
+    <style>
+        :root {
+            --ink: #1e293b;
+            --muted: #64748b;
+            --line: #e2e8f0;
+            --paper: #f8fafc;
+            --panel: #ffffff;
+            --navy: #172554;
+            --coral: #f97316;
+            --teal: #0f766e;
+            --green: #15803d;
+        }
+
+        * { box-sizing: border-box; }
+
+        body {
+            margin: 0;
+            color: var(--ink);
+            background: var(--paper);
+            font-family: Georgia, 'Times New Roman', serif;
+        }
+
+        button, input { font: inherit; }
+
+        .app-shell {
+            display: grid;
+            grid-template-columns: 240px 1fr;
+            min-height: 100vh;
+        }
+
+        .sidebar {
+            padding: 28px 18px;
+            color: #dbeafe;
+            background: var(--navy);
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin: 0 12px 48px;
+            color: white;
+            font-size: 1.3rem;
+            font-weight: bold;
+        }
+
+        .brand-mark {
+            display: grid;
+            width: 32px;
+            height: 32px;
+            place-items: center;
+            color: var(--navy);
+            border-radius: 8px;
+            background: var(--coral);
+        }
+
+        .nav-label {
+            margin: 0 12px 12px;
+            color: #93c5fd;
+            font: 0.7rem/1.2 Arial, sans-serif;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+        }
+
+        nav a {
+            display: flex;
+            gap: 12px;
+            align-items: center;
+            margin: 4px 0;
+            padding: 11px 12px;
+            color: #bfdbfe;
+            border-radius: 6px;
+            font: 0.92rem Arial, sans-serif;
+            text-decoration: none;
+        }
+
+        nav a:hover, nav a.active { color: white; background: #263b7a; }
+        nav a.active { box-shadow: inset 3px 0 var(--coral); }
+        .nav-icon { width: 18px; text-align: center; }
+
+        .sidebar-footer {
+            margin: 48px 12px 0;
+            padding-top: 18px;
+            border-top: 1px solid #334784;
+            color: #93c5fd;
+            font: 0.8rem/1.5 Arial, sans-serif;
+        }
+
+        main { min-width: 0; }
+
+        .topbar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+            padding: 22px 5%;
+            border-bottom: 1px solid var(--line);
+            background: var(--panel);
+        }
+
+        .breadcrumb { color: var(--muted); font: 0.82rem Arial, sans-serif; }
+        .breadcrumb strong { color: var(--ink); }
+
+        .top-actions { display: flex; align-items: center; gap: 16px; }
+        .search {
+            width: 190px;
+            padding: 9px 12px;
+            border: 1px solid var(--line);
+            border-radius: 5px;
+            color: var(--ink);
+            outline-color: var(--coral);
+            font: 0.82rem Arial, sans-serif;
+        }
+        .profile {
+            display: flex;
+            align-items: center;
+            gap: 9px;
+            color: var(--ink);
+            font: 0.82rem Arial, sans-serif;
+        }
+        .avatar { display: grid; width: 32px; height: 32px; place-items: center; color: white; border-radius: 50%; background: var(--teal); }
+
+        .content { max-width: 1400px; margin: 0 auto; padding: 42px 5%; }
+        .page-heading { display: flex; align-items: end; justify-content: space-between; gap: 20px; margin-bottom: 28px; }
+        h1 { margin: 0 0 7px; color: var(--navy); font-size: clamp(2rem, 4vw, 3.2rem); line-height: 1; }
+        .page-heading p { margin: 0; color: var(--muted); font: 0.9rem Arial, sans-serif; }
+        .date { color: var(--muted); font: 0.78rem Arial, sans-serif; }
+
+        .metrics { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-bottom: 28px; }
+        .metric { padding: 20px; border: 1px solid var(--line); border-radius: 7px; background: var(--panel); }
+        .metric-label { color: var(--muted); font: 0.76rem Arial, sans-serif; text-transform: uppercase; letter-spacing: 0.06em; }
+        .metric strong { display: block; margin: 12px 0 6px; color: var(--navy); font-size: 2rem; }
+        .change { color: var(--green); font: 0.78rem Arial, sans-serif; }
+
+        .dashboard-grid { display: grid; grid-template-columns: minmax(0, 1.6fr) minmax(280px, 1fr); gap: 20px; }
+        .panel { border: 1px solid var(--line); border-radius: 7px; background: var(--panel); }
+        .panel-header { display: flex; align-items: center; justify-content: space-between; padding: 20px 22px; border-bottom: 1px solid var(--line); }
+        h2 { margin: 0; color: var(--navy); font-size: 1.15rem; }
+        .panel-header a { color: var(--teal); font: 0.78rem Arial, sans-serif; text-decoration: none; }
+        table { width: 100%; border-collapse: collapse; font: 0.82rem Arial, sans-serif; }
+        th, td { padding: 15px 22px; text-align: left; border-bottom: 1px solid #f1f5f9; }
+        th { color: var(--muted); font-size: 0.7rem; letter-spacing: 0.07em; text-transform: uppercase; }
+        tr:last-child td { border-bottom: 0; }
+        .status { display: inline-block; padding: 5px 8px; color: var(--green); border-radius: 4px; background: #dcfce7; font-size: 0.7rem; }
+        .status.pending { color: #b45309; background: #fef3c7; }
+        .activity { list-style: none; margin: 0; padding: 6px 22px; }
+        .activity li { display: grid; grid-template-columns: 9px 1fr; gap: 13px; padding: 16px 0; border-bottom: 1px solid #f1f5f9; font: 0.82rem/1.5 Arial, sans-serif; }
+        .activity li:last-child { border-bottom: 0; }
+        .dot { width: 9px; height: 9px; margin-top: 5px; border-radius: 50%; background: var(--coral); }
+        .activity time { display: block; margin-top: 3px; color: var(--muted); font-size: 0.72rem; }
+
+        @media (max-width: 900px) {
+            .app-shell { grid-template-columns: 72px 1fr; }
+            .sidebar { padding: 20px 10px; }
+            .brand { justify-content: center; margin: 0 0 40px; }
+            .brand span, .nav-label, nav a span, .sidebar-footer { display: none; }
+            nav a { justify-content: center; padding: 13px 8px; }
+            .metrics { grid-template-columns: repeat(2, 1fr); }
+        }
+
+        @media (max-width: 620px) {
+            .topbar, .page-heading { align-items: flex-start; flex-direction: column; }
+            .top-actions { width: 100%; justify-content: space-between; }
+            .search { flex: 1; width: auto; }
+            .content { padding: 30px 4%; }
+            .metrics, .dashboard-grid { grid-template-columns: 1fr; }
+            th, td { padding: 13px 12px; }
+            th:nth-child(3), td:nth-child(3) { display: none; }
+        }
+    </style>
+</head>
+<body>
+    <div class="app-shell">
+        <aside class="sidebar">
+            <div class="brand"><span class="brand-mark">N</span><span>Northstar</span></div>
+            <p class="nav-label">Workspace</p>
+            <nav aria-label="Main navigation">
+                <a class="active" href="#overview"><span class="nav-icon">&#9632;</span><span>Overview</span></a>
+                <a href="#users"><span class="nav-icon">&#9823;</span><span>Users</span></a>
+                <a href="#reports"><span class="nav-icon">&#9776;</span><span>Reports</span></a>
+                <a href="#settings"><span class="nav-icon">&#9881;</span><span>Settings</span></a>
+            </nav>
+            <div class="sidebar-footer">Admin console<br>Version 2.4.1</div>
+        </aside>
+
+        <main>
+            <header class="topbar">
+                <div class="breadcrumb">Workspace / <strong>Overview</strong></div>
+                <div class="top-actions">
+                    <input class="search" type="search" placeholder="Search users..." aria-label="Search users">
+                    <div class="profile"><span class="avatar">SK</span><span>Supreet Kaur</span></div>
+                </div>
+            </header>
+
+            <section class="content" id="overview">
+                <div class="page-heading">
+                    <div><h1>Good morning, Supreet.</h1><p>Here is what is happening across your workspace.</p></div>
+                    <span class="date">Friday, 28 August 2026</span>
+                </div>
+
+                <div class="metrics" aria-label="Workspace summary">
+                    <article class="metric"><span class="metric-label">Total users</span><strong>12,840</strong><span class="change">+8.2% this month</span></article>
+                    <article class="metric"><span class="metric-label">Active sessions</span><strong>1,284</strong><span class="change">+12.4% this week</span></article>
+                    <article class="metric"><span class="metric-label">Conversion rate</span><strong>6.84%</strong><span class="change">+1.1% this month</span></article>
+                    <article class="metric"><span class="metric-label">Monthly revenue</span><strong>$48.2k</strong><span class="change">+14.6% this month</span></article>
+                </div>
+
+                <div class="dashboard-grid">
+                    <section class="panel" id="users">
+                        <div class="panel-header"><h2>Recent users</h2><a href="#users">View all users &rarr;</a></div>
+                        <table>
+                            <thead><tr><th>Name</th><th>Plan</th><th>Joined</th><th>Status</th></tr></thead>
+                            <tbody>
+                                <tr><td>Olivia Martin</td><td>Pro</td><td>Today</td><td><span class="status">Active</span></td></tr>
+                                <tr><td>Arjun Mehta</td><td>Team</td><td>Yesterday</td><td><span class="status">Active</span></td></tr>
+                                <tr><td>Clara Wilson</td><td>Free</td><td>Aug 26</td><td><span class="status pending">Pending</span></td></tr>
+                                <tr><td>Marcus Lee</td><td>Pro</td><td>Aug 25</td><td><span class="status">Active</span></td></tr>
+                            </tbody>
+                        </table>
+                    </section>
+
+                    <section class="panel" id="reports">
+                        <div class="panel-header"><h2>Recent activity</h2><a href="#reports">See log &rarr;</a></div>
+                        <ul class="activity">
+                            <li><span class="dot"></span><div><strong>New team created</strong><br>Acme Studio added 4 members<time>12 minutes ago</time></div></li>
+                            <li><span class="dot" style="background: var(--teal)"></span><div><strong>Report exported</strong><br>Monthly revenue report is ready<time>48 minutes ago</time></div></li>
+                            <li><span class="dot" style="background: var(--green)"></span><div><strong>Payment received</strong><br>Invoice #NS-1048 was paid<time>2 hours ago</time></div></li>
+                        </ul>
+                    </section>
+                </div>
+            </section>
+        </main>
+    </div>
+</body>
+</html>
