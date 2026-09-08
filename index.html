@@ -388,7 +388,14 @@
     </main>
 
     <footer>
-        <p>© 2026 Supreet Kaur. All rights reserved.</p>
+        <p id="para">© 2026 Supreet Kaur. All rights reserved.</p>
     </footer>
+    
+    <script>
+      const para =   document.getElementById('para');
+        addEventListener('click', function() {
+            para.innerHTML = "Hello  Supreet"
+        });
+    </script>
 </body>
 </html>
