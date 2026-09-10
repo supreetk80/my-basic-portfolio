@@ -1,13 +1,31 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <title ATM Balance </title>
-        <style>
-            body{
-                font-family: Arial , sans-serif;
-                background: color 
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <p id="msg"></p>
+    <p id="balance"></p>
+    <button id="btn">Check Balance</button>
+    <button id="submit" onclick="submitBalance()">submit Balance</button>
 
-            }
-        </style>
+    <script>
+      const submitBtn = document.getElementById("submit");
+      const submitMsg = document.getElementById("balance");
 
 
+      const submitBalance = () => {
+        const submitBalance = prompt("Enter your balance : ");
+        submitMsg.textContent = `Rs. ${submitBalance} is credit to your personal account.`;
+      };
+
+      document.getElementById("btn").addEventListener("click", () => {
+        let balance = 8000;
+        document.getElementById("msg").textContent =
+          `your account balance is ${balance}`;
+      });
+    </script>
+  </body>
+</html>
