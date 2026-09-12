@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Northstar | Organization Management</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --ink: #18211f;
+            --muted: #71807b;
+            --paper: #f5f7f1;
+            --panel: #ffffff;
+            --line: #e3e9e0;
+            --green: #1e6f5c;
+            --mint: #dcefe5;
+            --coral: #e9795c;
+            --yellow: #f5c76a;
+            --shadow: 0 18px 45px rgba(37, 67, 52, 0.08);
+        }
+
+        * { box-sizing: border-box; }
+
+        body {
+            margin: 0;
+            color: var(--ink);
+            background: var(--paper);
+            font-family: "DM Sans", sans-serif;
+        }
+
+        button, input, select { font: inherit; }
+        button { cursor: pointer; }
+
+        .app-shell { display: flex; min-height: 100vh; }
+
+        .sidebar {
+            width: 246px;
+            flex: 0 0 246px;
+            padding: 28px 18px;
+            background: #143c32;
+            color: #dcefe5;
+        }
+
+        .brand { display: flex; align-items: center; gap: 10px; margin: 0 12px 54px; color: #fff; font: 700 1.35rem "Space Grotesk", sans-serif; }
+        .brand-mark { display: grid; place-items: center; width: 32px; height: 32px; border-radius: 9px; color: #143c32; background: var(--yellow); font-weight: 700; }
+        .nav-label { margin: 0 12px 12px; color: #8db0a2; font-size: .68rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; }
+        .nav { display: grid; gap: 6px; }
+        .nav button { display: flex; align-items: center; gap: 13px; width: 100%; padding: 12px; border: 0; border-radius: 8px; color: #b8d2c5; background: transparent; text-align: left; }
+        .nav button:hover, .nav button.active { color: #173d32; background: var(--yellow); }
+        .nav-icon { width: 20px; text-align: center; font-size: 1.05rem; }
+        .sidebar-footer { margin: 120px 12px 0; padding-top: 18px; border-top: 1px solid #315a4e; color: #9bb9ad; font-size: .78rem; line-height: 1.6; }
+
+        main { width: 100%; min-width: 0; padding: 38px clamp(22px, 4vw, 58px); }
+        .topbar { display: flex; align-items: flex-start; justify-content: space-between; gap: 20px; margin-bottom: 34px; }
+        .eyebrow { margin: 0 0 8px; color: var(--green); font-size: .72rem; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; }
+        h1, h2, h3, p { margin-top: 0; }
+        h1 { margin-bottom: 8px; font: 700 clamp(1.8rem, 3vw, 2.45rem) "Space Grotesk", sans-serif; letter-spacing: -.04em; }
+        .subtitle { margin-bottom: 0; color: var(--muted); }
+        .top-actions { display: flex; align-items: center; gap: 18px; }
+        .date { color: var(--muted); font-size: .84rem; white-space: nowrap; }
+        .avatar { display: grid; place-items: center; width: 40px; height: 40px; border-radius: 50%; color: #fff; background: var(--coral); font-weight: 700; }
+
+        .stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-bottom: 28px; }
+        .stat { min-height: 128px; padding: 20px; border: 1px solid var(--line); border-radius: 10px; background: var(--panel); box-shadow: var(--shadow); }
+        .stat-head { display: flex; justify-content: space-between; color: var(--muted); font-size: .82rem; }
+        .stat-icon { color: var(--green); font-size: 1.2rem; }
+        .stat strong { display: block; margin: 15px 0 8px; font: 700 1.8rem "Space Grotesk", sans-serif; }
+        .trend { color: var(--green); font-size: .75rem; font-weight: 700; }
+        .trend.down { color: var(--coral); }
+
+        .content-grid { display: grid; grid-template-columns: minmax(0, 1.35fr) minmax(280px, .65fr); gap: 22px; }
+        .panel { padding: 23px; border: 1px solid var(--line); border-radius: 10px; background: var(--panel); box-shadow: var(--shadow); }
+        .panel-heading { display: flex; align-items: center; justify-content: space-between; gap: 15px; margin-bottom: 22px; }
+        .panel-heading h2 { margin-bottom: 0; font: 600 1.12rem "Space Grotesk", sans-serif; }
+        .panel-link { padding: 0; border: 0; color: var(--green); background: transparent; font-size: .78rem; font-weight: 700; }
+        .filters { display: flex; gap: 9px; margin-bottom: 16px; }
+        .filters input, .filters select { min-width: 0; padding: 10px 12px; border: 1px solid var(--line); border-radius: 6px; color: var(--ink); background: #fbfcf9; outline-color: var(--green); }
+        .filters input { flex: 1; }
+        .team-list { display: grid; gap: 4px; }
+        .team-row { display: grid; grid-template-columns: 1.7fr 1fr .8fr 72px; align-items: center; gap: 12px; min-height: 65px; border-bottom: 1px solid #edf1eb; }
+        .team-row:last-child { border-bottom: 0; }
+        .person { display: flex; align-items: center; gap: 11px; min-width: 0; }
+        .person-avatar { display: grid; place-items: center; width: 35px; height: 35px; flex: 0 0 35px; border-radius: 50%; color: var(--green); background: var(--mint); font-size: .78rem; font-weight: 700; }
+        .person strong, .person span { display: block; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+        .person strong { font-size: .86rem; }
+        .person span, .role { color: var(--muted); font-size: .74rem; }
+        .status { justify-self: start; padding: 5px 9px; border-radius: 20px; color: #33705a; background: var(--mint); font-size: .7rem; font-weight: 700; }
+        .status.away { color: #9b6b19; background: #fff0c9; }
+        .status.offline { color: #8b5b51; background: #f8dfd8; }
+
+        .project-list { display: grid; gap: 18px; }
+        .project { padding-bottom: 17px; border-bottom: 1px solid #edf1eb; }
+        .project:last-child { padding-bottom: 0; border-bottom: 0; }
+        .project-title { display: flex; justify-content: space-between; gap: 12px; margin-bottom: 8px; font-size: .85rem; font-weight: 700; }
+        .project-title span { color: var(--muted); font-size: .74rem; font-weight: 500; }
+        .progress { height: 7px; overflow: hidden; border-radius: 10px; background: #edf1eb; }
+        .progress i { display: block; height: 100%; border-radius: inherit; background: var(--green); }
+        .project-meta { display: flex; justify-content: space-between; margin-top: 8px; color: var(--muted); font-size: .72rem; }
+        .activity { margin-top: 22px; }
+        .activity-item { display: flex; gap: 10px; padding: 11px 0; border-bottom: 1px solid #edf1eb; font-size: .78rem; line-height: 1.4; }
+        .activity-item:last-child { border-bottom: 0; }
+        .activity-dot { width: 7px; height: 7px; flex: 0 0 7px; margin-top: 6px; border-radius: 50%; background: var(--coral); }
+        .activity-item span { color: var(--muted); }
+        .empty { padding: 30px 0; color: var(--muted); text-align: center; font-size: .85rem; }
+
+        @media (max-width: 900px) {
+            .sidebar { width: 76px; flex-basis: 76px; padding: 24px 10px; }
+            .brand { justify-content: center; margin: 0 0 42px; }
+            .brand-name, .nav-label, .nav button span, .sidebar-footer { display: none; }
+            .nav button { justify-content: center; padding: 13px 8px; }
+            .content-grid { grid-template-columns: 1fr; }
+            .stats { grid-template-columns: repeat(2, 1fr); }
+        }
+        @media (max-width: 560px) {
+            main { padding: 26px 16px; }
+            .topbar { margin-bottom: 24px; }
+            .date { display: none; }
+            .stats { gap: 10px; }
+            .stat { min-height: 108px; padding: 15px; }
+            .stat strong { margin: 9px 0 4px; font-size: 1.45rem; }
+            .panel { padding: 17px; }
+            .filters { flex-direction: column; }
+            .team-row { grid-template-columns: 1fr 72px; gap: 7px; }
+            .team-row > .role { display: none; }
+            .team-row > .status { grid-column: 2; grid-row: 1; }
+        }
+    </style>
+</head>
+<body>
+    <div class="app-shell">
+        <aside class="sidebar">
+            <div class="brand"><span class="brand-mark">N</span><span class="brand-name">northstar</span></div>
+            <p class="nav-label">Workspace</p>
+            <nav class="nav" aria-label="Main navigation">
+                <button class="active" type="button"><span class="nav-icon">▦</span><span>Overview</span></button>
+                <button type="button"><span class="nav-icon">♙</span><span>People</span></button>
+                <button type="button"><span class="nav-icon">▤</span><span>Projects</span></button>
+                <button type="button"><span class="nav-icon">◷</span><span>Calendar</span></button>
+                <button type="button"><span class="nav-icon">▥</span><span>Reports</span></button>
+            </nav>
+            <p class="nav-label" style="margin-top: 36px;">Management</p>
+            <nav class="nav" aria-label="Management navigation">
+                <button type="button"><span class="nav-icon">⚙</span><span>Settings</span></button>
+                <button type="button"><span class="nav-icon">?</span><span>Help centre</span></button>
+            </nav>
+            <div class="sidebar-footer">Q3 planning cycle<br><strong>18 days remaining</strong></div>
+        </aside>
+
+        <main>
+            <header class="topbar">
+                <div>
+                    <p class="eyebrow">Monday, September 15, 2025</p>
+                    <h1>Good morning, Supreet.</h1>
+                    <p class="subtitle">Here is what is happening across your organization.</p>
+                </div>
+                <div class="top-actions"><span class="date">Last synced 9:41 AM</span><div class="avatar" aria-label="Supreet Kaur">SK</div></div>
+            </header>
+
+            <section class="stats" aria-label="Organization summary">
+                <article class="stat"><div class="stat-head"><span>Team members</span><span class="stat-icon">♙</span></div><strong>48</strong><span class="trend">↑ 8.2% this quarter</span></article>
+                <article class="stat"><div class="stat-head"><span>Active projects</span><span class="stat-icon">▤</span></div><strong>12</strong><span class="trend">↑ 2 from last month</span></article>
+                <article class="stat"><div class="stat-head"><span>Tasks completed</span><span class="stat-icon">✓</span></div><strong>86%</strong><span class="trend">↑ 4.6% this week</span></article>
+                <article class="stat"><div class="stat-head"><span>Monthly spend</span><span class="stat-icon">◌</span></div><strong>$24.8k</strong><span class="trend down">↓ 3.1% under budget</span></article>
+            </section>
+
+            <div class="content-grid">
+                <section class="panel">
+                    <div class="panel-heading"><h2>People overview</h2><button class="panel-link" type="button">View directory →</button></div>
+                    <div class="filters"><input id="search" type="search" placeholder="Search people..." aria-label="Search people"><select id="department" aria-label="Filter by department"><option value="all">All departments</option><option value="Product">Product</option><option value="Design">Design</option><option value="Marketing">Marketing</option><option value="Engineering">Engineering</option></select></div>
+                    <div class="team-list" id="team-list"></div>
+                </section>
+
+                <section class="panel">
+                    <div class="panel-heading"><h2>Project pulse</h2><button class="panel-link" type="button">All projects →</button></div>
+                    <div class="project-list">
+                        <div class="project"><div class="project-title">Website relaunch <span>72%</span></div><div class="progress"><i style="width: 72%;"></i></div><div class="project-meta"><span>Due Sep 28</span><span>On track</span></div></div>
+                        <div class="project"><div class="project-title">Q4 campaign <span>45%</span></div><div class="progress"><i style="width: 45%; background: var(--coral);"></i></div><div class="project-meta"><span>Due Oct 04</span><span>Needs attention</span></div></div>
+                        <div class="project"><div class="project-title">Mobile experience <span>89%</span></div><div class="progress"><i style="width: 89%; background: var(--yellow);"></i></div><div class="project-meta"><span>Due Sep 21</span><span>On track</span></div></div>
+                    </div>
+                    <div class="activity">
+                        <div class="panel-heading"><h2>Recent activity</h2><button class="panel-link" type="button">See all</button></div>
+                        <div class="activity-item"><i class="activity-dot"></i><div><strong>Maya Chen</strong> updated the Q4 campaign brief<br><span>12 minutes ago</span></div></div>
+                        <div class="activity-item"><i class="activity-dot" style="background: var(--yellow);"></i><div><strong>Owen Williams</strong> joined the Product team<br><span>1 hour ago</span></div></div>
+                    </div>
+                </section>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        const people = [
+            { name: "Maya Chen", role: "Product Manager", department: "Product", initials: "MC", status: "Available", statusClass: "" },
+            { name: "Owen Williams", role: "Senior Designer", department: "Design", initials: "OW", status: "Available", statusClass: "" },
+            { name: "Amara Okafor", role: "Growth Lead", department: "Marketing", initials: "AO", status: "Away", statusClass: "away" },
+            { name: "Ethan Brooks", role: "Frontend Engineer", department: "Engineering", initials: "EB", status: "Available", statusClass: "" },
+            { name: "Sofia Martinez", role: "Content Strategist", department: "Marketing", initials: "SM", status: "Offline", statusClass: "offline" }
+        ];
+
+        const teamList = document.querySelector("#team-list");
+        const searchInput = document.querySelector("#search");
+        const departmentSelect = document.querySelector("#department");
+
+        function renderPeople() {
+            const query = searchInput.value.toLowerCase().trim();
+            const department = departmentSelect.value;
+            const filteredPeople = people.filter(person => {
+                const matchesSearch = `${person.name} ${person.role}`.toLowerCase().includes(query);
+                return matchesSearch && (department === "all" || person.department === department);
+            });
+
+            teamList.innerHTML = filteredPeople.length ? filteredPeople.map(person => `
+                <div class="team-row">
+                    <div class="person"><span class="person-avatar">${person.initials}</span><div><strong>${person.name}</strong><span>${person.department}</span></div></div>
+                    <span class="role">${person.role}</span>
+                    <span class="status ${person.statusClass}">${person.status}</span>
+                </div>
+            `).join("") : '<div class="empty">No people match your search.</div>';
+        }
+
+        searchInput.addEventListener("input", renderPeople);
+        departmentSelect.addEventListener("change", renderPeople);
+        renderPeople();
+    </script>
+</body>
+</html>
