@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Population Counter - India</title>
+</head>
+<body>
+    <h1>Population Counter of India</h1>
+
+    <label for="population">Enter population:</label>
+    <input type="number" id="population" min="0" placeholder="Enter number">
+
+    <button onclick="countPopulation()">Count</button>
+
+    <h2 id="result"></h2>
+
+    <script>
+        function countPopulation() {
+            const population = Number(document.getElementById("population").value);
+            const result = document.getElementById("result");
+
+            if (population < 0 || !Number.isInteger(population)) {
+                result.textContent = "Please enter a valid population.";
+            } else {
+                result.textContent = `India's population entered: ${population.toLocaleString("en-IN")}`;
+            }
+        }
+    </script>
+</body>
+</html>
+</body>
+</html>
