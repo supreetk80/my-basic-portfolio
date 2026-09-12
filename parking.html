@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vehicle Parking System</title>
+</head>
+<body>
+    <h1>Vehicle Parking System</h1>
+
+    <label for="vehicleType">Select vehicle type:</label>
+    <select id="vehicleType">
+        <option value="bike">Bike</option>
+        <option value="car">Car</option>
+        <option value="truck">Truck</option>
+    </select>
+
+    <button onclick="parkVehicle()">Park Vehicle</button>
+
+    <h2 id="message"></h2>
+
+    <script>
+        const parkingSlots = {
+            bike: 3,
+            car: 5,
+            truck: 2
+        };
+
+        function parkVehicle() {
+            const vehicleType = document.getElementById("vehicleType").value;
+            const message = document.getElementById("message");
+
+            if (parkingSlots[vehicleType] > 0) {
+                parkingSlots[vehicleType]--;
+                message.textContent =
+                    `Vehicle parked successfully. ${parkingSlots[vehicleType]} ${vehicleType} slot(s) remaining.`;
+            } else {
+                message.textContent =
+                    `No parking slots are available for a ${vehicleType}.`;
+            }
+        }
+    </script>
+</body>
+</html>
+</body>
+</html>
