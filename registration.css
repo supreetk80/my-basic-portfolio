@@ -1,0 +1,121 @@
+/* Full Page */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+
+    /* Sunset image as background */
+    background-image: url("sunset.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    opacity:0.6;
+
+    min-height: 100vh;
+}
+
+/* Hide the separate image */
+.img {
+    display: none;
+    opacity:0.6;
+}
+
+/* Form Box */
+.form {
+    width: 450px;
+    margin: 40px auto;
+    padding: 30px;
+
+    background: transparent;
+    border-radius: 15px;
+
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+}
+
+/* Heading */
+.form h1 {
+    text-align: center;
+    margin-bottom: 25px;
+    color: #333;
+}
+
+/* Labels */
+.form label {
+    display: inline-block;
+    width: 130px;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 8px;
+}
+
+/* Text boxes */
+.form input[type="text"],
+.form input[type="email"],
+.form input[type="password"],
+.form input[type="tel"],
+.form input[type="date"],
+.form select,
+.form textarea {
+    width: 250px;
+    padding: 10px;
+    border: 1px solid #aaa;
+    border-radius: 6px;
+    box-sizing: border-box;
+    font-size: 14px;
+}
+
+/* Textarea */
+.form textarea {
+    width: 100%;
+    margin-top: 8px;
+    resize: vertical;
+}
+
+/* Focus effect */
+.form input:focus,
+.form select:focus,
+.form textarea:focus {
+    border-color: #ff7b54;
+    outline: none;
+    box-shadow: 0 0 5px rgba(255, 123, 84, 0.5);
+}
+
+/* Radio buttons and checkboxes */
+.form input[type="radio"],
+.form input[type="checkbox"] {
+    margin-right: 5px;
+}
+
+/* Buttons */
+.form input[type="submit"],
+.form input[type="reset"] {
+    padding: 11px 25px;
+    border: none;
+    border-radius: 6px;
+    font-size: 15px;
+    font-weight: bold;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+/* Register button */
+.form input[type="submit"] {
+    background-color: #ff7043;
+    color: white;
+}
+
+/* Reset button */
+.form input[type="reset"] {
+    background-color: #555;
+    color: white;
+}
+
+/* Button hover */
+.form input[type="submit"]:hover {
+    background-color: #e64a19;
+}
+
+.form input[type="reset"]:hover {
+    background-color: #333;
+}
