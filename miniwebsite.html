@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Complete Mini Website</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial;
+        }
+
+        header {
+            background: #222;
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+
+        nav {
+            background: #444;
+            padding: 15px;
+            text-align: center;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin: 20px;
+        }
+
+        .hero {
+            padding: 80px;
+            text-align: center;
+            background: #ddd;
+        }
+
+        .cards {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            padding: 40px;
+            flex-wrap: wrap;
+        }
+
+        .card {
+            width: 250px;
+            padding: 25px;
+            text-align: center;
+            border-radius: 10px;
+            box-shadow: 0 0 10px gray;
+        }
+
+        footer {
+            background: #222;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+
+        @media(max-width:600px) {
+            .hero {
+                padding: 40px 15px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+    <h1>My BCA Website</h1>
+    <p>Learn • Create • Develop</p>
+</header>
+
+<nav>
+    <a href="#">Home</a>
+    <a href="#">Courses</a>
+    <a href="#">Projects</a>
+    <a href="#">Contact</a>
+</nav>
+
+<section class="hero">
+    <h1>Welcome to My Website</h1>
+    <p>Explore web development and programming.</p>
+
+    <button onclick="welcome()">
+        Get Started
+    </button>
+</section>
+
+<section class="cards">
+
+    <div class="card">
+        <h2>HTML</h2>
+        <p>Build the structure of websites.</p>
+    </div>
+
+    <div class="card">
+        <h2>CSS</h2>
+        <p>Design beautiful web pages.</p>
+    </div>
+
+    <div class="card">
+        <h2>JavaScript</h2>
+        <p>Add interaction to websites.</p>
+    </div>
+
+</section>
+
+<footer>
+    <p>© 2026 My BCA Website</p>
+</footer>
+
+<script>
+function welcome() {
+    alert("Welcome to the website!");
+}
+</script>
+
+</body>
+</html>
