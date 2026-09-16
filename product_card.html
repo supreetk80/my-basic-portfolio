@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Product Card</title>
+
+    <style>
+        .card {
+            width: 300px;
+            margin: 50px auto;
+            padding: 20px;
+            text-align: center;
+            border-radius: 15px;
+            box-shadow: 0 0 15px gray;
+        }
+
+        .card img {
+            width: 100%;
+            border-radius: 10px;
+        }
+
+        .price {
+            font-size: 25px;
+            font-weight: bold;
+        }
+
+        button {
+            padding: 12px 30px;
+            border: none;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="card">
+
+    <img src="laptop.jpg" alt="Laptop">
+
+    <h2>Modern Laptop</h2>
+
+    <p>High-performance laptop for students.</p>
+
+    <p class="price">₹55,000</p>
+
+    <button onclick="alert('Product added to cart!')">
+        Add to Cart
+    </button>
+
+</div>
+
+</body>
+</html>
