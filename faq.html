@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>FAQ Accordion</title>
+
+    <style>
+        body {
+            font-family: Arial;
+            max-width: 700px;
+            margin: 40px auto;
+        }
+
+        .question {
+            background: #333;
+            color: white;
+            padding: 15px;
+            cursor: pointer;
+            margin-top: 5px;
+        }
+
+        .answer {
+            display: none;
+            padding: 15px;
+            background: #eee;
+        }
+    </style>
+</head>
+
+<body>
+
+<h1>Frequently Asked Questions</h1>
+
+<div class="question" onclick="showAnswer(0)">
+    What is HTML?
+</div>
+
+<div class="answer">
+    HTML stands for HyperText Markup Language.
+</div>
+
+<div class="question" onclick="showAnswer(1)">
+    What is CSS?
+</div>
+
+<div class="answer">
+    CSS is used to style HTML webpages.
+</div>
+
+<div class="question" onclick="showAnswer(2)">
+    What is JavaScript?
+</div>
+
+<div class="answer">
+    JavaScript adds dynamic behavior to webpages.
+</div>
+
+<script>
+function showAnswer(index) {
+
+    let answers = document.getElementsByClassName("answer");
+
+    if (answers[index].style.display == "block") {
+        answers[index].style.display = "none";
+    } else {
+        answers[index].style.display = "block";
+    }
+}
+</script>
+
+</body>
+</html>
