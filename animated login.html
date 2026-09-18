@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Animated Login</title>
+
+    <style>
+        body {
+            font-family: Arial;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+        }
+
+        .login {
+            width: 350px;
+            margin: 100px auto;
+            padding: 30px;
+            background: white;
+            border-radius: 15px;
+            animation: slide 1s ease;
+        }
+
+        @keyframes slide {
+            from {
+                transform: translateY(-100px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        input {
+            width: 100%;
+            padding: 12px;
+            margin: 10px 0;
+            box-sizing: border-box;
+        }
+
+        button {
+            width: 100%;
+            padding: 12px;
+            background: #667eea;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="login">
+
+    <h2>Login</h2>
+
+    <form onsubmit="loginUser(event)">
+        <input type="email" id="email"
+               placeholder="Enter Email" required>
+
+        <input type="password" id="password"
+               placeholder="Enter Password" required>
+
+        <button type="submit">Login</button>
+    </form>
+
+    <p id="message"></p>
+
+</div>
+
+<script>
+function loginUser(event) {
+    event.preventDefault();
+
+    document.getElementById("message").innerHTML =
+        "Login submitted successfully!";
+}
+</script>
+
+</body>
+</html>
