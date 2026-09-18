@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Dark Mode</title>
+
+    <style>
+        body {
+            font-family: Arial;
+            background: white;
+            color: black;
+            transition: 0.5s;
+        }
+
+        .dark {
+            background: #111;
+            color: white;
+        }
+
+        button {
+            padding: 12px 20px;
+            cursor: pointer;
+        }
+
+        .container {
+            text-align: center;
+            margin-top: 150px;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <h1>Dark Mode Website</h1>
+
+    <p>Click the button to change the theme.</p>
+
+    <button onclick="toggleMode()">
+        Toggle Dark Mode
+    </button>
+
+</div>
+
+<script>
+
+function toggleMode() {
+    document.body.classList.toggle("dark");
+}
+
+</script>
+
+</body>
+</html>
