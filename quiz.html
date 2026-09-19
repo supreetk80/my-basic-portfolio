@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Online Quiz</title>
+</head>
+
+<body>
+
+<h1>HTML Quiz</h1>
+
+<form id="quiz">
+
+    <p>1. HTML stands for?</p>
+
+    <input type="radio" name="q1" value="correct">
+    HyperText Markup Language
+
+    <br>
+
+    <input type="radio" name="q1" value="wrong">
+    HighText Machine Language
+
+    <p>2. Which tag creates a paragraph?</p>
+
+    <input type="radio" name="q2" value="correct">
+    &lt;p&gt;
+
+    <br>
+
+    <input type="radio" name="q2" value="wrong">
+    &lt;h1&gt;
+
+    <p>3. Which language styles webpages?</p>
+
+    <input type="radio" name="q3" value="correct">
+    CSS
+
+    <br>
+
+    <input type="radio" name="q3" value="wrong">
+    SQL
+
+    <br><br>
+
+    <button type="button" onclick="checkQuiz()">
+        Submit Quiz
+    </button>
+
+</form>
+
+<h2 id="score"></h2>
+
+<script>
+
+function checkQuiz() {
+
+    let score = 0;
+
+    let answers =
+        document.querySelectorAll(
+            'input[value="correct"]:checked'
+        );
+
+    score = answers.length;
+
+    document.getElementById("score").innerHTML =
+        "Your Score: " + score + "/3";
+}
+
+</script>
+
+</body>
+</html>
