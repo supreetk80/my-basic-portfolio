@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Animated Cards</title>
+
+    <style>
+        .container {
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+            flex-wrap: wrap;
+            margin-top: 70px;
+        }
+
+        .card {
+            width: 250px;
+            padding: 30px;
+            text-align: center;
+            border-radius: 15px;
+            box-shadow: 0 0 10px gray;
+            transition: 0.4s;
+        }
+
+        .card:hover {
+            transform: translateY(-15px);
+            box-shadow: 0 15px 25px gray;
+        }
+
+        button {
+            padding: 10px 20px;
+        }
+    </style>
+</head>
+
+<body>
+
+<h1 align="center">Courses</h1>
+
+<div class="container">
+
+<div class="card">
+    <h2>HTML</h2>
+    <p>Learn webpage structure.</p>
+    <button>Learn More</button>
+</div>
+
+<div class="card">
+    <h2>CSS</h2>
+    <p>Learn webpage designing.</p>
+    <button>Learn More</button>
+</div>
+
+<div class="card">
+    <h2>JavaScript</h2>
+    <p>Learn webpage interaction.</p>
+    <button>Learn More</button>
+</div>
+
+</div>
+
+</body>
+</html>
