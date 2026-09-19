@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Local Storage</title>
+</head>
+
+<body>
+
+<h1>Student Information</h1>
+
+<input type="text" id="name" placeholder="Name">
+<input type="text" id="course" placeholder="Course">
+
+<button onclick="saveData()">Save</button>
+<button onclick="loadData()">Load</button>
+
+<h2 id="output"></h2>
+
+<script>
+
+function saveData() {
+
+    let name = document.getElementById("name").value;
+    let course = document.getElementById("course").value;
+
+    localStorage.setItem("studentName", name);
+    localStorage.setItem("studentCourse", course);
+
+    alert("Data Saved!");
+}
+
+function loadData() {
+
+    let name = localStorage.getItem("studentName");
+    let course = localStorage.getItem("studentCourse");
+
+    document.getElementById("output").innerHTML =
+        "Name: " + name + "<br>Course: " + course;
+}
+
+</script>
+
+</body>
+</html>
