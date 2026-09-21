@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Contact Us</title>
+
+    <style>
+        body {
+            font-family: Arial;
+        }
+
+        .contact {
+            width: 500px;
+            margin: 50px auto;
+        }
+
+        input, textarea {
+            width: 100%;
+            padding: 12px;
+            margin: 10px 0;
+            box-sizing: border-box;
+        }
+
+        button {
+            padding: 12px 30px;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="contact">
+
+<h1>Contact Us</h1>
+
+<form onsubmit="sendMessage(event)">
+
+<input type="text"
+       placeholder="Full Name"
+       required>
+
+<input type="email"
+       placeholder="Email"
+       required>
+
+<input type="text"
+       placeholder="Subject"
+       required>
+
+<textarea rows="6"
+          placeholder="Your Message"
+          required></textarea>
+
+<button type="submit">Send Message</button>
+
+</form>
+
+<p id="message"></p>
+
+</div>
+
+<script>
+
+function sendMessage(event) {
+
+    event.preventDefault();
+
+    document.getElementById("message").innerHTML =
+        "Your message has been submitted successfully.";
+}
+
+</script>
+
+</body>
+</html>
