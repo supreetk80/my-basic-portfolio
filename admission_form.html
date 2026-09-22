@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Online Admission Form</title>
+    <style>
+        body {
+            font-family: Arial;
+            background: #eef2f3;
+        }
+
+        .container {
+            width: 650px;
+            margin: 30px auto;
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 0 15px gray;
+        }
+
+        input, select, textarea {
+            width: 100%;
+            padding: 10px;
+            margin: 7px 0 15px;
+            box-sizing: border-box;
+        }
+
+        button {
+            padding: 12px;
+            width: 100%;
+            background: darkblue;
+            color: white;
+            border: none;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <h1>College Admission Form</h1>
+
+    <form onsubmit="submitForm(event)">
+
+        <label>Student Name</label>
+        <input type="text" required>
+
+        <label>Father's Name</label>
+        <input type="text" required>
+
+        <label>Date of Birth</label>
+        <input type="date" required>
+
+        <label>Email</label>
+        <input type="email" required>
+
+        <label>Mobile Number</label>
+        <input type="tel" pattern="[0-9]{10}" required>
+
+        <label>Course</label>
+        <select required>
+            <option value="">Select Course</option>
+            <option>BCA</option>
+            <option>BBA</option>
+            <option>MCA</option>
+        </select>
+
+        <label>Address</label>
+        <textarea rows="5"></textarea>
+
+        <button type="submit">Submit Application</button>
+
+    </form>
+
+    <p id="message"></p>
+
+</div>
+
+<script>
+function submitForm(event) {
+    event.preventDefault();
+
+    document.getElementById("message").innerHTML =
+        "Admission form submitted successfully!";
+}
+</script>
+
+</body>
+</html>
