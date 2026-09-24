@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Unit Converter</title>
+</head>
+
+<body>
+
+<h1>Unit Converter</h1>
+
+<input type="number"
+       id="km"
+       placeholder="Kilometers">
+
+<button onclick="convert()">
+    Convert to Miles
+</button>
+
+<h2 id="result"></h2>
+
+<script>
+
+function convert() {
+
+    let km =
+        Number(document.getElementById("km").value);
+
+    let miles = km * 0.621371;
+
+    document.getElementById("result").innerHTML =
+        km + " km = " + miles.toFixed(2) + " miles";
+}
+
+</script>
+
+</body>
+</html>
