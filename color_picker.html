@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Color Picker</title>
+</head>
+
+<body>
+
+<h1>Color Picker</h1>
+
+<input type="color"
+       id="color"
+       onchange="changeColor()">
+
+<h2 id="code">Select a Color</h2>
+
+<script>
+
+function changeColor() {
+
+    let color =
+        document.getElementById("color").value;
+
+    document.body.style.backgroundColor = color;
+
+    document.getElementById("code").innerHTML =
+        "Selected Color: " + color;
+}
+
+</script>
+
+</body>
+</html>
