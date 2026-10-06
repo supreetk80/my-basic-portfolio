@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Weather App</title>
+
+    <style>
+        body {
+            text-align: center;
+            font-family: Arial;
+            background: #dff3ff;
+        }
+
+        .weather {
+            width: 350px;
+            margin: 100px auto;
+            padding: 30px;
+            background: white;
+            border-radius: 15px;
+        }
+
+        input {
+            padding: 12px;
+        }
+
+        button {
+            padding: 12px;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="weather">
+
+    <h1>Weather App</h1>
+
+    <input type="text"
+           id="city"
+           placeholder="Enter City">
+
+    <button onclick="showWeather()">
+        Search
+    </button>
+
+    <h2 id="result"></h2>
+
+</div>
+
+<script>
+
+function showWeather() {
+
+    let city =
+        document.getElementById("city").value;
+
+    if (city == "") {
+        alert("Enter city name");
+        return;
+    }
+
+    document.getElementById("result").innerHTML =
+        "Weather information for " + city;
+}
+
+</script>
+
+</body>
+</html>
