@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Canvas Program</title>
+</head>
+
+<body>
+
+<h1>HTML Canvas</h1>
+
+<canvas id="myCanvas"
+        width="600"
+        height="350"
+        style="border:2px solid black;">
+</canvas>
+
+<script>
+
+let canvas = document.getElementById("myCanvas");
+let ctx = canvas.getContext("2d");
+
+ctx.fillRect(50, 50, 150, 100);
+
+ctx.beginPath();
+ctx.arc(350, 100, 60, 0, 2 * Math.PI);
+ctx.stroke();
+
+ctx.font = "30px Arial";
+ctx.fillText("HTML Canvas", 180, 250);
+
+</script>
+
+</body>
+</html>
