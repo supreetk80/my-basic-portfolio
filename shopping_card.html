@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Shopping Cart</title>
+
+    <style>
+        .products {
+            display: flex;
+            gap: 20px;
+        }
+
+        .product {
+            width: 200px;
+            padding: 20px;
+            border: 1px solid gray;
+            text-align: center;
+        }
+
+        button {
+            padding: 10px;
+        }
+    </style>
+</head>
+
+<body>
+
+<h1>Online Store</h1>
+
+<div class="products">
+
+    <div class="product">
+        <h2>Laptop</h2>
+        <p>₹50,000</p>
+        <button onclick="add(50000)">Add to Cart</button>
+    </div>
+
+    <div class="product">
+        <h2>Mobile</h2>
+        <p>₹20,000</p>
+        <button onclick="add(20000)">Add to Cart</button>
+    </div>
+
+    <div class="product">
+        <h2>Headphones</h2>
+        <p>₹2,000</p>
+        <button onclick="add(2000)">Add to Cart</button>
+    </div>
+
+</div>
+
+<h2>Total: ₹<span id="total">0</span></h2>
+
+<script>
+
+let total = 0;
+
+function add(price) {
+
+    total += price;
+
+    document.getElementById("total").innerHTML =
+        total;
+}
+
+</script>
+
+</body>
+</html>
