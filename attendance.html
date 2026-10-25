@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Attendance Management</title>
+</head>
+
+<body>
+
+<h1>Student Attendance</h1>
+
+<table border="1" cellpadding="15">
+
+<tr>
+    <th>Roll No.</th>
+    <th>Name</th>
+    <th>Status</th>
+</tr>
+
+<tr>
+    <td>101</td>
+    <td>Rahul</td>
+    <td>
+        <select>
+            <option>Present</option>
+            <option>Absent</option>
+        </select>
+    </td>
+</tr>
+
+<tr>
+    <td>102</td>
+    <td>Simran</td>
+    <td>
+        <select>
+            <option>Present</option>
+            <option>Absent</option>
+        </select>
+    </td>
+</tr>
+
+<tr>
+    <td>103</td>
+    <td>Aman</td>
+    <td>
+        <select>
+            <option>Present</option>
+            <option>Absent</option>
+        </select>
+    </td>
+</tr>
+
+</table>
+
+<br>
+
+<button onclick="saveAttendance()">
+    Save Attendance
+</button>
+
+<p id="message"></p>
+
+<script>
+function saveAttendance() {
+
+    document.getElementById("message").innerHTML =
+        "Attendance saved successfully!";
+}
+</script>
+
+</body>
+</html>
